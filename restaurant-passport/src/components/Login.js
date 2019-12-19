@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { stat } from 'fs';
+
 
 function Login({ values, errors, touched, status}){
     const [member, setMember] = useState([]);
@@ -13,7 +13,7 @@ function Login({ values, errors, touched, status}){
 
     return(
         <div className="login-form">
-            <Form>
+            <Form className="div1">
                 <Field type= "text" name ="username" placeholder ="Username" />
                 {touched.username && errors.username && <p>{errors.username}</p>}
 
