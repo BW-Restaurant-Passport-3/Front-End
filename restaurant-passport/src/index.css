@@ -43,8 +43,8 @@ p{
   box-shadow: 2px 2px 10px 10px rgba(232, 103, 182, 0.1);
 }
 .div1 {
-  width: 60%;
-  margin-right: 35px;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .error {

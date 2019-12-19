@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
-function SignIn ({ values, errors, touched,  status }){
+function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -81,6 +81,6 @@ const FormikSignInForm = withFormik({
                 });
             }
         }
-    )(SignIn);
+    )(SignUp);
 
 export default FormikSignInForm;
