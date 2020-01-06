@@ -5,6 +5,8 @@ import axios from 'axios';
 
 
 function Login({ values, errors, touched, status}){
+    //make a post request to retrieve a token from the api
+    // when you have handled the token, navigate to the Home route
     const [member, setMember] = useState([]);
 
     useEffect(()=>{
