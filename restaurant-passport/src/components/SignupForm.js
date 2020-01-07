@@ -14,19 +14,19 @@ function SignUp ({ values, errors, touched,  status }){
         <div className="user-form">
             <div className="div1">
             <Form >
-                   <Field type="text" name="username" placeholder="Username" />
+                   <Field type="text" name="username" placeholder="Username*" />
                    {touched.username && errors.username && <p className="errors"> {errors.username}</p>}
                    
-                    <Field type="password" name="password" placeholder="Password" />
+                    <Field type="password" name="password" placeholder="Password*" />
                     {touched.password && errors.password && <p className="errors">{errors.password}</p>}
                     
-                    <Field type="text" name="name" placeholder="Name" />
+                    <Field type="text" name="name" placeholder="Name*" />
                    {touched.name && errors.name && <p className="errors"> {errors.name}</p>}
                     
-                    <Field type="text" name="city" placeholder="City" />
+                    <Field type="text" name="city" placeholder="City*" />
                    {touched.city && errors.city && <p className="errors"> {errors.city}</p>}
 
-                   <Field type="email" name="email" placeholder="Email" />
+                   <Field type="email" name="email" placeholder="Email*" />
                     {touched.email && errors.email && <p className="errors">{errors.email}</p>}
                    
                 <button type="submit"> SignUp </button>
