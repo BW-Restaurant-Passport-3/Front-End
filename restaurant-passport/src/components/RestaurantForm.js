@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import RestaurantCard from './RestaurantCard';
 
 
 function RestaurantForm({ values, errors, touched, status}){
-    const [restaurant, setRestaurant] = useState([]);
+    const [restaurant, setRestaurant] = useState([
+        {
+            restaurantName:"restaurant",
+            city:"my city"
+        }
+    ]);
 
     useEffect(()=>{
         status && setRestaurant(restaurant =>[...restaurant, status]);
@@ -46,6 +52,7 @@ function RestaurantForm({ values, errors, touched, status}){
                 </Field>        
                 <button type="submit"> Add Reataurant </button>
             </Form>
+            <RestaurantCard restaurant={restaurant}/>
         </div>
     );  
 }

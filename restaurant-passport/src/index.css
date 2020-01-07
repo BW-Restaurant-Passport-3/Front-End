@@ -156,3 +156,6 @@ nav{
 .impressed-select option {
   font-weight: normal;
 }
+.cardbox{
+  border: 2px solid black;
+}
