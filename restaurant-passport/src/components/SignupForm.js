@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
-
+    
     useEffect(() => {
        status && setUsers(users => [...users, status]); 
     }, [status]);
