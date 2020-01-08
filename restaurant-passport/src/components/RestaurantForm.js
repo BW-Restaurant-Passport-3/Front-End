@@ -8,41 +8,53 @@ import RestaurantCard from './RestaurantCard';
 function RestaurantForm({ values, errors, touched, status}){
     const [restaurant, setRestaurant] = useState([
         {
-            restaurantName:"restaurant",
-            city:"my city",
-            phoneNumber:"123-456-7898",
-            myRating:10,
-            notes:"Notes about the reataurant"
-        }
-        //,
-        // {
-        //     restaurantName:"restaurant",
-        //     city:"my city",
-        //     phoneNumber:"123-456-7898",
-        //     myRating:20,
-        //     notes:"Notes about the reataurant"
-        // },
-        // {
-        //     restaurantName:"restaurant",
-        //     city:"my city",
-        //     phoneNumber:"123-456-7898",
-        //     myRating:170,
-        //     notes:"Notes about the reataurant"
-        // },
-        // {
-        //     restaurantName:"restaurant",
-        //     city:"my city",
-        //     phoneNumber:"123-456-7898",
-        //     myRating:1790,
-        //     notes:"Notes about the reataurant"
-        // },
-        // {
-        //     restaurantName:"restaurant",
-        //     city:"my city",
-        //     phoneNumber:"123-456-7898",
-        //     myRating:170,
-        //     notes:"Notes about the reataurant"
-        // },
+            "id": 1,
+            "name": "Crossroads",
+            "city": "Los Angeles",
+            "zipcode": "1234",
+            "phone_number": "123-456-7890",
+            "website": "www.restaurant.com",
+            "rating": 5,
+            "notes": "I like it",
+            "stamped": 1,
+            "user_id": 1
+          },
+          {
+            "id": 2,
+            "name": "Gracias Madre",
+            "city": "Los Angeles",
+            "zipcode": "1234",
+            "phone_number": "123-456-7890",
+            "website": "www.restaurant.com",
+            "rating": 2,
+            "notes": "Over rated",
+            "stamped": 1,
+            "user_id": 1
+          },
+          {
+            "id": 3,
+            "name": "Muchies",
+            "city": "Santa Ana",
+            "zipcode": "1234",
+            "phone_number": "123-456-7890",
+            "website": "www.restaurant.com",
+            "rating": null,
+            "notes": "Annoying social media",
+            "stamped": 0,
+            "user_id": 1
+          },
+          {
+            "id": 4,
+            "name": "Native",
+            "city": "Costa Mesa",
+            "zipcode": "1234",
+            "phone_number": "123-456-7890",
+            "website": "www.restaurant.com",
+            "rating": 4,
+            "notes": "I like it",
+            "stamped": 1,
+            "user_id": 2
+          }
     ]);
 
     useEffect(()=>{
@@ -53,8 +65,8 @@ function RestaurantForm({ values, errors, touched, status}){
         <div className="restaurant-form">
             <Form className="div1">
              <div className="formCol">
-             <Field type= "text" name ="restaurantName" placeholder ="Restaurant Name" />
-                {touched.restaurantName && errors.restaurantName && <p>{errors.restaurantName}</p>}
+             <Field type= "text" name ="name" placeholder ="Restaurant Name" />
+                {touched.name && errors.name && <p>{errors.name}</p>}
 
                 <Field type= "text" name ="streetAddress" placeholder ="Street" />
                 {touched.streetAddress && errors.streetAddress && <p>{errors.streetAddress}</p>}
@@ -62,19 +74,19 @@ function RestaurantForm({ values, errors, touched, status}){
                 <Field type= "text" name ="city" placeholder ="City" />
                 {touched.city && errors.city && <p>{errors.city}</p>}
                 
-                <Field type= "number" name ="zipCode" placeholder ="Zip code" />
-                {touched.zipCode && errors.zipCode && <p>{errors.zipCode}</p>}
+                <Field type= "number" name ="zipcode" placeholder ="Zip code" />
+                {touched.zipcode && errors.zipcode && <p>{errors.zipcode}</p>}
                 
-                <Field type= "number" name ="phoneNumber" placeholder ="Phone Number" />
-                {touched.phoneNumber && errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+                <Field type= "number" name ="phone_number" placeholder ="Phone Number" />
+                {touched.phone_number && errors.phone_number && <p>{errors.phone_number}</p>}
                 
-                <Field type= "text" name ="websiteURL" placeholder ="Web address" />
-                {touched.websiteURL && errors.websiteURL && <p>{errors.websiteURL}</p>}
+                <Field type= "text" name ="website" placeholder ="Web address" />
+                {touched.website && errors.website && <p>{errors.website}</p>}
              </div>
                 
                <div className="formCol">
-               <Field type= "number" name ="myRating" placeholder ="Your Rating" />
-                {touched.myRating && errors.myRating && <p>{errors.myRating}</p>}
+               <Field type= "number" name ="rating" placeholder ="Your Rating" />
+                {touched.rating && errors.rating && <p>{errors.rating}</p>}
                 
                 <Field as="textarea" type="text"name ="notes" placeholder ="Notes" />
                 {touched.notes && errors.notes && <p>{errors.notes}</p>}
@@ -88,39 +100,39 @@ function RestaurantForm({ values, errors, touched, status}){
                 <button type="submit"> Add Reataurant </button>
                </div>
             </Form>
-            {/* <RestaurantCard restaurant={restaurant}/> */}
+            <RestaurantCard restaurant={restaurant}/>
         </div>
     );  
 }
     const FormikRestaurantForm =withFormik({
         mapPropsToValues(props){
             return{
-                restaurantName: props.restaurantName || "",
+                name: props.name || "",
                 streetAddress: props.streetAddress || "" ,
                 city: props.city || "",
-                zipCode: props.zipCode || "",
-                phoneNumber: props.phoneNumber || "",
-                websiteURL: props.websiteURL || "",
-                myRating: props.myRating || "",
+                zipcode: props.zipcode || "",
+                phone_number: props.phone_number || "",
+                website: props.website || "",
+                rating: props.rating || "",
                 notes: props.notes || "",
                 stamped: props.stamped || ""
             }
         },
 
         validationSchema: Yup.object().shape({
-            restaurantName: Yup.string()
+            name: Yup.string()
                 .required("Restaurant Name is required"),
             streetAddress: Yup.string()
                 .required("Address  is required"),
             city: Yup.string()
                 .required("City is required"),
-            zipCode: Yup.number()
+            zipcode: Yup.number()
                 .required("Add zip code"),
-            phoneNumber:Yup.number()
+            phone_number:Yup.number()
                 .required("Add phone number"),
-            websiteURL: Yup.string()
+            website: Yup.string()
                 .required("WebSite is required"),
-            myRating: Yup.number()
+            rating: Yup.number()
                 .required("Add rating"),
         }),
         

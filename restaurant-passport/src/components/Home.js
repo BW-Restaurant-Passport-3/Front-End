@@ -12,12 +12,12 @@ function Home(props) {
                 />
             </div>
         <div className="buttons-wrapper">
-        {/* <button onClick={() => props.history.push("/form")} className="md-button">
+        <button onClick={() => props.history.push("/form")} className="md-button">
            Restaurant Form
         </button>
         <button onClick={() => props.history.push("/list")} className="md-button">
            Restaurant list
-        </button> */}
+        </button>
             <button onClick={() => props.history.push("/signup")} className="md-button">
            Signup
         </button>

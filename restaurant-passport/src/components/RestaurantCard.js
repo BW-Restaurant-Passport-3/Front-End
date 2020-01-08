@@ -17,12 +17,13 @@ export default function RestaurantCard(props) {
                   <Card >
                     <CardImg top width="100%" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80" alt="Card image cap" />
                     <CardBody>
-                      <CardTitle>Name: {item.restaurantName}</CardTitle>
+                      <CardTitle>Name: {item.name}</CardTitle>
                       <CardSubtitle>City: {item.city}</CardSubtitle>
-                      <CardText>Phone Number: {item.phoneNumber}</CardText>
-                      <CardText>My rating: {item.myRating}</CardText>
+                      <CardText>Phone Number: {item.phone_number}</CardText>
+                      <CardText>My rating: {item.rating}</CardText>
                       <CardText>Notes: {item.notes}</CardText>
-                      <Button >See webpage {item.websiteURL}</Button>
+                      <CardText >Webpage {item.website}</CardText>
+                      <Button src={item.website}>View more</Button>
                     </CardBody>
                   </Card>
                 </CardDeck>
