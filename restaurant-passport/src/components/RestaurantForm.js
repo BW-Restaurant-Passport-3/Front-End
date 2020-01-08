@@ -9,8 +9,40 @@ function RestaurantForm({ values, errors, touched, status}){
     const [restaurant, setRestaurant] = useState([
         {
             restaurantName:"restaurant",
-            city:"my city"
+            city:"my city",
+            phoneNumber:"123-456-7898",
+            myRating:10,
+            notes:"Notes about the reataurant"
         }
+        //,
+        // {
+        //     restaurantName:"restaurant",
+        //     city:"my city",
+        //     phoneNumber:"123-456-7898",
+        //     myRating:20,
+        //     notes:"Notes about the reataurant"
+        // },
+        // {
+        //     restaurantName:"restaurant",
+        //     city:"my city",
+        //     phoneNumber:"123-456-7898",
+        //     myRating:170,
+        //     notes:"Notes about the reataurant"
+        // },
+        // {
+        //     restaurantName:"restaurant",
+        //     city:"my city",
+        //     phoneNumber:"123-456-7898",
+        //     myRating:1790,
+        //     notes:"Notes about the reataurant"
+        // },
+        // {
+        //     restaurantName:"restaurant",
+        //     city:"my city",
+        //     phoneNumber:"123-456-7898",
+        //     myRating:170,
+        //     notes:"Notes about the reataurant"
+        // },
     ]);
 
     useEffect(()=>{
@@ -20,7 +52,8 @@ function RestaurantForm({ values, errors, touched, status}){
     return(
         <div className="restaurant-form">
             <Form className="div1">
-                <Field type= "text" name ="restaurantName" placeholder ="Restaurant Name" />
+             <div className="formCol">
+             <Field type= "text" name ="restaurantName" placeholder ="Restaurant Name" />
                 {touched.restaurantName && errors.restaurantName && <p>{errors.restaurantName}</p>}
 
                 <Field type= "text" name ="streetAddress" placeholder ="Street" />
@@ -37,8 +70,10 @@ function RestaurantForm({ values, errors, touched, status}){
                 
                 <Field type= "text" name ="websiteURL" placeholder ="Web address" />
                 {touched.websiteURL && errors.websiteURL && <p>{errors.websiteURL}</p>}
+             </div>
                 
-                <Field type= "number" name ="myRating" placeholder ="Your Rating" />
+               <div className="formCol">
+               <Field type= "number" name ="myRating" placeholder ="Your Rating" />
                 {touched.myRating && errors.myRating && <p>{errors.myRating}</p>}
                 
                 <Field as="textarea" type="text"name ="notes" placeholder ="Notes" />
@@ -51,8 +86,9 @@ function RestaurantForm({ values, errors, touched, status}){
                     {touched.stamped && errors.stamped && <p>{errors.stamped}</p>}
                 </Field>        
                 <button type="submit"> Add Reataurant </button>
+               </div>
             </Form>
-            <RestaurantCard restaurant={restaurant}/>
+            {/* <RestaurantCard restaurant={restaurant}/> */}
         </div>
     );  
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import RestaurantCard from "./RestaurantCard"
 
-export default function RestaurantList({props}) {
+export default function RestaurantList(props) {
     
   return (
     <section className="character-list">

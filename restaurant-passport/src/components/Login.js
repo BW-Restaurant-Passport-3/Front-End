@@ -13,7 +13,7 @@ function Login({ values, errors, touched, status}){
 
     return(
         <div className="login-form">
-            <Form className="div1">
+            <Form className="formCol">
                 <Field type= "text" name ="username" placeholder ="Username" />
                 {touched.username && errors.username && <p>{errors.username}</p>}
 
@@ -21,6 +21,9 @@ function Login({ values, errors, touched, status}){
                 {touched.password && errors.password && <p>{errors.password}</p>}
                 <button type="submit"> Login </button>
             </Form>
+            <div className="formCol">
+                <img src="https://images.unsplash.com/photo-1527224538127-2104bb71c51b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80"/>
+            </div>
         </div>
     );  
 }
