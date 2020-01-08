@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { withFormik, Form, Field } from 'formik';
+import { withFormik, Form, Field, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
-    
+
     useEffect(() => {
        status && setUsers(users => [...users, status]); 
     }, [status]);
@@ -69,19 +70,17 @@ const FormikSignInForm = withFormik({
     }),
     //======END VALIDATION SCHEMA==========
 
-    handleSubmit(values, { resetForm ,setStatus}) {
-            axios
-                .post("https://reqres.in/api/users", values)
-                .then(res => {
-                    console.log("This is the Response", res); 
-                    resetForm();
-                    setStatus(res.data);
-                })
-                .catch(err => {
-                    console.log(err); 
-                });
-            }
-        }
-    )(SignUp);
-
-export default FormikSignInForm;
+    handleSubmit(values) {
+        console.log(values);
+        AxiosWithAuth()
+          .post("/auth/register", values)
+          .then(res => {
+            console.log(res);
+            // resetForm();
+            // setStatus(res.data);
+          })
+          .catch(err => console.error(err));
+      }
+    })(SignUp);
+    
+    export default FormikSignUpForm;
