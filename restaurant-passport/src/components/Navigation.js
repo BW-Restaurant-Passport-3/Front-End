@@ -6,7 +6,7 @@ export default function Navigation() {
   return (
     <header className="ui centered">
       <nav>
-        <Link to="/">Restaurant Passport </Link>
+        <Link to="/"><h1>Restaurant Passport</h1></Link>
         <div className="nav-links">
           <br/>
           <Link to="/signup">Signup</Link>
