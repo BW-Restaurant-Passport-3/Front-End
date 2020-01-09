@@ -70,17 +70,18 @@ const FormikSignInForm = withFormik({
     }),
     //======END VALIDATION SCHEMA==========
 
-    handleSubmit(values) {
+    handleSubmit(values, { resetForm, setStatus}) {
         console.log(values);
         AxiosWithAuth()
           .post("/auth/register", values)
           .then(res => {
             console.log(res);
-            // resetForm();
+            localStorage.setItem('token', res.data.token);
+            resetForm();
             // setStatus(res.data);
           })
           .catch(err => console.error(err));
       }
     })(SignUp);
     
-    export default FormikSignUpForm;
+    export default FormikSignInForm;
