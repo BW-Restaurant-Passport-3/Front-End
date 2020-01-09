@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Card, Button, CardImg, CardTitle, CardText, CardDeck,
+  Card, Button, CardTitle, CardText, CardDeck,
   CardSubtitle, CardBody
 } from 'reactstrap';
 import image from './img/map.png';
@@ -15,9 +15,7 @@ export default function RestaurantCard(props) {
               return(
                 <CardDeck >
                   <Card >
-                  {/* <CardImg top width="10%" src={image} alt="Restaurant Card image " /> */}
                     <CardBody>
-
                     <div className="title-img">
                       <CardTitle>Name: {item.city} </CardTitle>
                       <img src={image} alt="Restaurant Card image "/>
