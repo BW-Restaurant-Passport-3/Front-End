@@ -182,5 +182,13 @@ nav{
 .card-deck{
   width:32%;
   margin: 10px auto;
-  
+}
+.title-img{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+.title-img img{
+  width:40px;
 }
