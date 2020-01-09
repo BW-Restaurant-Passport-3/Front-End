@@ -8,7 +8,7 @@ import Navigation from './components/Navigation'
 import FormikRestaurantForm from './components/RestaurantForm'
 import RestaurantList from './components/RestaurantList';
 import RestaurantCard from './components/RestaurantCard';
-
+import Footer from './components/Footer.js'
 function App() {
   return (
     <main>
@@ -19,6 +19,7 @@ function App() {
       <Route exact path="/form" component= {FormikRestaurantForm}/>
       <Route exact path="/list" component= {RestaurantList}/>
       <Route exact path="/restaurant" component= {RestaurantCard}/>
+    <Footer/>
     </main>
   );
 }
