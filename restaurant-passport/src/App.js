@@ -19,7 +19,7 @@ function App() {
       <Route exact path="/form" component= {FormikRestaurantForm}/>
       <Route exact path="/list" component= {RestaurantList}/>
       <Route exact path="/restaurant" component= {RestaurantCard}/>
-    <Footer/>
+      <Footer/>
     </main>
   );
 }
