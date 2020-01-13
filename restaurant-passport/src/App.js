@@ -9,6 +9,7 @@ import FormikRestaurantForm from './components/RestaurantForm'
 import RestaurantCard from './components/RestaurantCard';
 import PrivateRoute from './utils/PrivateRoute';
 
+import Footer from './components/Footer.js'
 function App() {
   return (
     <main>
@@ -19,6 +20,7 @@ function App() {
       <PrivateRoute path="/form" component= {FormikRestaurantForm}/>
      {/* <Route exact path="/list" component= {RestaurantList}/> */}
       <Route exact path="/restaurant" component= {RestaurantCard}/>
+      <Footer/>
     </main>
   );
 }

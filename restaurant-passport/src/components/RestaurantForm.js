@@ -25,13 +25,19 @@ function RestaurantForm({ values, errors, touched, status}){
             "city": "Los Angeles",
             "zipcode": "1234",
             "phone_number": "123-456-7890",
-            "website": "www.restaurant.com",
+            "website": "www.lambdaschool.com",
             "rating": 2,
             "notes": "Over rated",
             "stamped": 1,
             "user_id": 1
           }
     ]);
+    const delRestaurant = id => {
+        const newArray = restaurant.filter(item => {
+          return item.id !== id;
+        });
+        setRestaurant(newArray);
+      };
 
     useEffect(()=>{
         status && setRestaurant(restaurant =>[...restaurant, status]);
@@ -76,7 +82,7 @@ function RestaurantForm({ values, errors, touched, status}){
                 <button type="submit"> Add Reataurant </button>
                </div>
             </Form>
-            <RestaurantCard restaurant={restaurant}/>
+            <RestaurantCard delRestaurantFn={delRestaurant} restaurant={restaurant}/>
         </div>
     );  
 }
