@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field, setNestedObjectValues } from 'formik';
-import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
-// import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
-
+    
     useEffect(() => {
        status && setUsers(users => [...users, status]); 
     }, [status]);
@@ -32,7 +32,7 @@ function SignUp ({ values, errors, touched,  status }){
 
                    <Field type="email" name="email" placeholder="Email*" />
                     {touched.email && errors.email && <p className="errors">{errors.email}</p>}
-                    <p>Already have an account? <Link to="/login">LogIn</Link></p>
+                   
                 <button type="submit"> SignUp </button>
                    </div>
             </Form>
@@ -40,6 +40,7 @@ function SignUp ({ values, errors, touched,  status }){
     );
 }
 const FormikSignInForm = withFormik({
+    
     mapPropsToValues(props) {
         return {
             username: props.username || "",
@@ -55,31 +56,34 @@ const FormikSignInForm = withFormik({
         username: Yup.string()
             .min(4, "Username must be 4 characters minimum")
             .max(15, 'Too Long!')
-            .required("Please add user name!"),
+            .required("User Name is required"),
         password: Yup.string()
             .min(6, "Password must be 6 characters minimum")
             .max(10, 'Too Long!')
-            .required("Please add password!"),
+            .required("Password is required"),
         name: Yup.string()
             .min(2, "Name must be 2 characters minimum")
-            .max(15, 'Name is too Long!'),
+            .max(15, 'Too Long!'),
         email: Yup.string()
             .email("Email not valid")
-            .required("Please add email!"),
+            .required("Email is required"),
         city: Yup.string()
-        .required("Please add city!")
+        .required("")
     }),
     //======END VALIDATION SCHEMA==========
 
-    handleSubmit(values, { resetForm, setStatus}) {
+    handleSubmit(values, { resetForm, setStatus, props}) {
+        
         console.log(values);
-        axios()
+        AxiosWithAuth()
           .post("/auth/register", values)
           .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
-            resetForm();
-            setStatus(res.data);
+            // resetForm();
+            props.history.push("/login");
+
+            // setStatus(res.data);
           })
           .catch(err => console.error(err));
       }

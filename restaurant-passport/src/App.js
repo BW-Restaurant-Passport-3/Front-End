@@ -6,18 +6,19 @@ import FormikLoginForm from './components/Login'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import FormikRestaurantForm from './components/RestaurantForm'
-import RestaurantList from './components/RestaurantList';
 import RestaurantCard from './components/RestaurantCard';
+import PrivateRoute from './utils/PrivateRoute';
+
 import Footer from './components/Footer.js'
 function App() {
   return (
     <main>
       <Navigation/>
       <Route exact path="/" component ={Home}/>
-      <Route exact path="/signup" component ={FormikSignInForm}/> 
-      <Route exact path="/login" component ={FormikLoginForm}/> 
-      <Route exact path="/form" component= {FormikRestaurantForm}/>
-      <Route exact path="/list" component= {RestaurantList}/>
+      <Route exact path="/signup" render={(props) => <FormikSignInForm {...props}/>} />
+      <Route exact path="/login" render={(props) => <FormikLoginForm {...props}/>} />
+      <PrivateRoute path="/form" component= {FormikRestaurantForm}/>
+     {/* <Route exact path="/list" component= {RestaurantList}/> */}
       <Route exact path="/restaurant" component= {RestaurantCard}/>
       <Footer/>
     </main>

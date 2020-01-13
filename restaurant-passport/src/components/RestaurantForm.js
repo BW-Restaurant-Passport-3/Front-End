@@ -30,30 +30,6 @@ function RestaurantForm({ values, errors, touched, status}){
             "notes": "Over rated",
             "stamped": 1,
             "user_id": 1
-          },
-          {
-            "id": 3,
-            "name": "Muchies",
-            "city": "Santa Ana",
-            "zipcode": "1234",
-            "phone_number": "123-456-7890",
-            "website": "www.google.com",
-            "rating": null,
-            "notes": "Annoying social media",
-            "stamped": 0,
-            "user_id": 1
-          },
-          {
-            "id": 4,
-            "name": "Native",
-            "city": "Costa Mesa",
-            "zipcode": "1234",
-            "phone_number": "123-456-7890",
-            "website": "www.facebook.com",
-            "rating": 4,
-            "notes": "I like it",
-            "stamped": 1,
-            "user_id": 2
           }
     ]);
     const delRestaurant = id => {
@@ -143,7 +119,7 @@ function RestaurantForm({ values, errors, touched, status}){
         }),
         
         handleSubmit(values, { resetForm, setStatus}){
-            axios.post("https://reqres.in/api/users", values)
+            axios.post("", values)
             .then(response =>{
                 console.log("Restaurant form Response", response);
                 resetForm();
