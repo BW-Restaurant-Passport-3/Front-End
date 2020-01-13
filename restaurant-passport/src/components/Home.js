@@ -14,17 +14,8 @@ function Home(props) {
                  and taste, and brag to your friends about all the cool eateries
                   you've been to!</h3></div>
         <div className="buttons-wrapper">
-          {/* <button onClick={() => props.history.push("/form")} className="md-button">
-            Restaurant Form
-          </button>
-          <button onClick={() => props.history.push("/list")} className="md-button">
-            Restaurant list
-          </button> */}
-              <button onClick={() => props.history.push("/signup")} className="md-button">
-            Signup
-          </button>
-          <button onClick={() => props.history.push("/login")} className="md-button">
-            Login
+          <button onClick={() => props.history.push("/form")} className="md-button">
+            Go to dashboard
           </button>
         </div>
       </div>

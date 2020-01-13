@@ -11,6 +11,8 @@ import "../index.css";
 export default function RestaurantCard(props) {
   
   console.log("restautrant", props)
+  
+
     return(
       <div className="card-container" >
           {props.restaurant.map(item => {

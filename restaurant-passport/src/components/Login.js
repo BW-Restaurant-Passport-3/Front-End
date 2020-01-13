@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
+import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
 
@@ -19,7 +20,9 @@ function Login({ values, errors, touched, status}){
 
                 <Field type= "password" name ="password" placeholder ="Password" />
                 {touched.password && errors.password && <p>{errors.password}</p>}
-                <button type="submit"> Login </button>
+                <p>Don't have an account? <Link to="/signup">SignUp</Link></p>
+                <button type="submit"> LogIn </button>
+                <p>Forgot your password?</p>
             </Form>
             <div className="formCol">
                 <img src="https://images.unsplash.com/photo-1527224538127-2104bb71c51b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80"/>
@@ -37,9 +40,9 @@ function Login({ values, errors, touched, status}){
 
         validationSchema: Yup.object().shape({
             username: Yup.string()
-                .required("Username is required"),
+                .required("Please add username!"),
             password: Yup.string()
-                .required("Password is required")
+                .required("Please add password!")
         }),
         
         handleSubmit(values, { resetForm, setStatus}){
