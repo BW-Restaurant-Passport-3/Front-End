@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -6,7 +7,7 @@ import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
-
+    
     useEffect(() => {
        status && setUsers(users => [...users, status]); 
     }, [status]);
@@ -39,6 +40,7 @@ function SignUp ({ values, errors, touched,  status }){
     );
 }
 const FormikSignInForm = withFormik({
+    
     mapPropsToValues(props) {
         return {
             username: props.username || "",
@@ -70,14 +72,17 @@ const FormikSignInForm = withFormik({
     }),
     //======END VALIDATION SCHEMA==========
 
-    handleSubmit(values, { resetForm, setStatus}) {
+    handleSubmit(values, { resetForm, setStatus, props}) {
+        
         console.log(values);
         AxiosWithAuth()
           .post("/auth/register", values)
           .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
-            resetForm();
+            // resetForm();
+            props.history.push("/login");
+
             // setStatus(res.data);
           })
           .catch(err => console.error(err));
