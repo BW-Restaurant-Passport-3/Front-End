@@ -10,9 +10,7 @@ import "../index.css";
 
 export default function RestaurantCard(props) {
   
-  console.log("restaurant", props)
-  console.log("restautrant", props)
-  
+  console.log("restaurant", props)  
 
     return(
       <div className="card-container" >
