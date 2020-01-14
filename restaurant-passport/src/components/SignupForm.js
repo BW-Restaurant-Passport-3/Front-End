@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { AxiosWithAuth } from '../utils/axiosWithAuth';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);

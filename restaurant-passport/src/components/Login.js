@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { AxiosWithAuth } from '../utils/axiosWithAuth';
 
 
 function Login({ values, errors, touched, status}){

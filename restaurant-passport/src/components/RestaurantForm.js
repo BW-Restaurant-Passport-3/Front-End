@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import RestaurantCard from './RestaurantCard';
-import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { AxiosWithAuth } from '../utils/axiosWithAuth';
 import { withRouter } from 'react-router-dom';
 
 
