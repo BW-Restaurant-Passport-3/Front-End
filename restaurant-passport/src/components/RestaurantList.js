@@ -30,14 +30,13 @@ export default function RestaurantList(props) {
         "user_id": 1
       }
 ]);
-// const [restaurant, setRestaurant] = useState([])
-// const APIurl="https://bw-restaurant-passport.herokuapp.com/"
+
 
   useEffect(() => {
     AxiosWithAuth()
     .get("/restaurants")
     .then(response => {
-      console.log(response)
+      // console.log(response)
       setRestaurant(response.data)
     })
    
@@ -50,7 +49,7 @@ export default function RestaurantList(props) {
       <h2>Restaurants you visited</h2>
       <button  onClick={() => props.history.push("/form")}>Add new Restaurant</button>
        
-       <RestaurantCard restaurant={restaurant}/>
+       <RestaurantCard restaurant={restaurant} updateRestaurants={setRestaurant}/>
       
     </section>
   );

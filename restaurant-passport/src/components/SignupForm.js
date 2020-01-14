@@ -33,7 +33,7 @@ function SignUp ({ values, errors, touched,  status }){
                    <Field type="email" name="email" placeholder="Email*" />
                     {touched.email && errors.email && <p className="errors">{errors.email}</p>}
                    
-                <button type="submit"> SignUp </button>
+                <button type="submit"> Sign Up </button>
                    </div>
             </Form>
         </div>
