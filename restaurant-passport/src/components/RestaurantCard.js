@@ -22,15 +22,15 @@ export default function RestaurantCard(props) {
                     <div className="title-img">
                       <CardTitle>Name: {item.city} </CardTitle>
                       <img src={image} alt="Restaurant Card image "/>
-                      <img src={deletebtn} id='remove-btn' onClick={() => props.delRestaurantFn(item.id)} alt="Delete Card image "/>
+                      <img src={deletebtn} id='remove-btn' alt="Delete Card image "/>
                     </div>
                       <CardSubtitle>City: {item.city}</CardSubtitle>
                       <CardText>Phone Number: {item.phone_number}</CardText>
                       <CardText>My rating: {item.rating}</CardText>
                       <CardText>Notes: {item.notes}</CardText>
                       <CardText >Webpage: {item.website}</CardText>
-                      <Button href={`https://${item.website}`} >
-                        View more</Button>
+                      <Button>
+                        Edit</Button>
                     </CardBody>
                   </Card>
                 </CardDeck>

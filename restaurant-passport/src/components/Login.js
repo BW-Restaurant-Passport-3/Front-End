@@ -49,8 +49,9 @@ function Login({ values, errors, touched, status}){
             AxiosWithAuth()
                 .post("/auth/login", values)
                 .then(res => {
-                    console.log("Response", values);
+                    console.log("Response", res.data);
                     localStorage.setItem('token', res.data.token);
+                    localStorage.setItem('user', res.data.user);
                     props.history.push('/form');
                     
                 })
