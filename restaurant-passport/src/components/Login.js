@@ -52,7 +52,7 @@ function Login({ values, errors, touched, status}){
                     console.log("Response", res.data);
                     localStorage.setItem('token', res.data.token);
                     localStorage.setItem('user', res.data.user);
-                    props.history.push('/form');
+                    props.history.push('/list');
                     
                 })
                 .catch(error => console.log(error));
