@@ -8,6 +8,7 @@ import Navigation from './components/Navigation'
 import FormikRestaurantForm from './components/RestaurantForm'
 import RestaurantCard from './components/RestaurantCard';
 import PrivateRoute from './utils/PrivateRoute';
+import RestaurantList from './components/RestaurantList'
 
 import Footer from './components/Footer.js'
 function App() {
@@ -17,8 +18,8 @@ function App() {
       <Route exact path="/" component ={Home}/>
       <Route exact path="/signup" render={(props) => <FormikSignInForm {...props}/>} />
       <Route exact path="/login" render={(props) => <FormikLoginForm {...props}/>} />
-      <PrivateRoute path="/form" component= {FormikRestaurantForm}/>
-     {/* <Route exact path="/list" component= {RestaurantList}/> */}
+      <PrivateRoute path="/form" render={(props) => <FormikRestaurantForm {...props}/>} />
+     <Route exact path="/list" component= {RestaurantList}/>
       <Route exact path="/restaurant" component= {RestaurantCard}/>
       <Footer/>
     </main>

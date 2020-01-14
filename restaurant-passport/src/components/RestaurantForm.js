@@ -3,9 +3,11 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import RestaurantCard from './RestaurantCard';
+import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { withRouter } from 'react-router-dom';
 
 
-function RestaurantForm({ values, errors, touched, status}){
+function RestaurantForm({ values, errors, touched, status, props}){
     const [restaurant, setRestaurant] = useState([
         {
             "id": 1,
@@ -32,16 +34,15 @@ function RestaurantForm({ values, errors, touched, status}){
             "user_id": 1
           }
     ]);
-    const delRestaurant = id => {
-        const newArray = restaurant.filter(item => {
-          return item.id !== id;
-        });
-        setRestaurant(newArray);
-      };
+    // const delRestaurant = id => {
+    //     const newArray = restaurant.filter(item => {
+    //       return item.id !== id;
+    //     });
+    //     setRestaurant(newArray);
+    //   };
 
-    useEffect(()=>{
-        status && setRestaurant(restaurant =>[...restaurant, status]);
-    }, [status]);
+   
+       
 
     return(
         <div className="restaurant-form">
@@ -79,10 +80,11 @@ function RestaurantForm({ values, errors, touched, status}){
                     <option value="false">Nope</option>
                     {touched.stamped && errors.stamped && <p>{errors.stamped}</p>}
                 </Field>        
-                <button type="submit"> Add Reataurant </button>
+                <button type="submit"> Add Restaurant </button>
+                <button type="submit" > View All Restaurants </button>
                </div>
             </Form>
-            <RestaurantCard delRestaurantFn={delRestaurant} restaurant={restaurant}/>
+    
         </div>
     );  
 }
@@ -97,7 +99,7 @@ function RestaurantForm({ values, errors, touched, status}){
                 website: props.website || "",
                 rating: props.rating || "",
                 notes: props.notes || "",
-                stamped: props.stamped || ""
+                stamped: props.stamped || null
             }
         },
 
@@ -118,17 +120,30 @@ function RestaurantForm({ values, errors, touched, status}){
                 .required("Add rating"),
         }),
         
-        handleSubmit(values, { resetForm, setStatus}){
-            axios.post("", values)
-            .then(response =>{
-                console.log("Restaurant form Response", response);
-                resetForm();
-                setStatus(response.data);
+        handleSubmit(values, { resetForm, setStatus, props}){
+            const newValues = {
+                "name": values.name,
+                "city": values.city,
+                "zipcode": `${values.zipcode}`,
+                "phone_number": `${values.phone_number}`,
+                "website": values.website,
+                "rating": values.rating,
+                "notes": values.notes,
+                "stamped": values.stamped,
+                "user_id": Number(localStorage.getItem('user'))
+            }
+            console.log(newValues);
+            AxiosWithAuth()
+            .post("/restaurants", newValues)
+            .then(res => {
+                console.log(res)
+                props.history.push('/list')
             })
-            .catch(error =>{
-                console.log(error);
-            })
+        
+            .catch(err => console.log(err));
+
+           
         }
 
     })(RestaurantForm);
- export default FormikRestaurantForm;
+ export default withRouter(FormikRestaurantForm);
