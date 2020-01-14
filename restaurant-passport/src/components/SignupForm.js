@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { withFormik, Form, Field, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { AxiosWithAuth } from '../utils/AxiosWithAuth';
+import { AxiosWithAuth } from '../utils/axiosWithAuth';
 
 function SignUp ({ values, errors, touched,  status }){
     const [users, setUsers] = useState([]);
@@ -33,7 +33,7 @@ function SignUp ({ values, errors, touched,  status }){
                    <Field type="email" name="email" placeholder="Email*" />
                     {touched.email && errors.email && <p className="errors">{errors.email}</p>}
                    
-                <button type="submit"> SignUp </button>
+                <button type="submit"> Sign Up </button>
                    </div>
             </Form>
         </div>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import RestaurantCard from "./RestaurantCard";
 import axios from 'axios';
-import { AxiosWithAuth } from "../utils/AxiosWithAuth";
+import { AxiosWithAuth } from "../utils/axiosWithAuth";
 
 export default function RestaurantList(props) {
   const [restaurant, setRestaurant] = useState([
