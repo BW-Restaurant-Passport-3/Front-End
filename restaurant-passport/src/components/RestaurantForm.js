@@ -80,10 +80,10 @@ function RestaurantForm({ values, errors, touched, status, props}){
                     <option value="false">Nope</option>
                     {touched.stamped && errors.stamped && <p>{errors.stamped}</p>}
                 </Field>        
-                <button type="submit"> Add Restaurant </button>
-                <button type="submit" > View All Restaurants </button>
+                <button type="submit"> Add Restaurant </button>       
                </div>
             </Form>
+           
     
         </div>
     );  
@@ -141,9 +141,9 @@ function RestaurantForm({ values, errors, touched, status, props}){
             })
         
             .catch(err => console.log(err));
-
-           
+            return (
+            <button type="submit" onClick={() => props.history.push("/list")}> View All Restaurants </button>
+            )
         }
-
     })(RestaurantForm);
  export default withRouter(FormikRestaurantForm);

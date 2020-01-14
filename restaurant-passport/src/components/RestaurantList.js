@@ -3,7 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import axios from 'axios';
 import { AxiosWithAuth } from "../utils/AxiosWithAuth";
 
-export default function RestaurantList() {
+export default function RestaurantList(props) {
   const [restaurant, setRestaurant] = useState([
     {
         "id": 1,
@@ -48,6 +48,7 @@ export default function RestaurantList() {
   return (
     <section className="character-list">
       <h2>Restaurants you visited</h2>
+      <button  onClick={() => props.history.push("/form")}>Add new Restaurant</button>
        
        <RestaurantCard restaurant={restaurant}/>
       
